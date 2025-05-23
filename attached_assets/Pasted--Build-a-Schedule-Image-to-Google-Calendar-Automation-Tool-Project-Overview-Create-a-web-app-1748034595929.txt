@@ -1,0 +1,164 @@
+# Build a Schedule Image to Google Calendar Automation Tool
+
+## Project Overview
+Create a web application that allows users to upload images/screenshots of schedules, automatically extracts date/time information using OCR and AI, and adds the extracted events to their Google Calendar.
+
+## Core Features Required
+
+### 1. Image Upload Interface
+- Clean, modern web interface for image upload
+- Support for common image formats (PNG, JPG, JPEG, WebP)
+- Drag-and-drop functionality
+- Preview uploaded image before processing
+- Progress indicator during processing
+
+### 2. OCR and Text Extraction
+- Integrate OCR capability to extract text from uploaded images
+- Use Google Vision API, Tesseract.js, or similar OCR service
+- Handle various image qualities and orientations
+- Preprocess images if needed (contrast, rotation correction)
+
+### 3. Intelligent Schedule Parsing
+- Use AI to parse extracted text and identify:
+  - Dates (various formats: MM/DD, DD/MM, "Monday", "Jan 15", etc.)
+  - Times (12-hour, 24-hour formats)
+  - Event titles/descriptions
+  - Duration or end times
+- Handle table formats, list formats, and free-text schedules
+- Extract recurring events if applicable
+
+### 4. Google Calendar Integration
+- Implement Google Calendar API integration
+- OAuth2 authentication for user's Google account
+- Create calendar events with:
+  - Event title
+  - Start date/time
+  - End date/time (calculated or extracted)
+  - Description/notes
+  - Location (if found in image)
+
+### 5. Preview and Confirmation
+- Show extracted events in a table/list format before adding to calendar
+- Allow users to edit extracted information
+- Batch add multiple events
+- Confirmation of successful calendar additions
+
+## Technical Requirements
+
+### Frontend
+- **Framework**: React.js or Vue.js with modern UI components
+- **Styling**: Tailwind CSS or Material-UI for clean, responsive design
+- **File Handling**: File upload with validation and preview
+- **State Management**: For tracking upload progress and extracted data
+
+### Backend
+- **Language**: Node.js with Express or Python with FastAPI
+- **OCR Integration**: Google Vision API or Tesseract integration
+- **AI Processing**: OpenAI GPT-4 Vision API or similar for intelligent text parsing
+- **Google API**: Google Calendar API with proper authentication
+- **File Storage**: Temporary storage for uploaded images
+
+### Database (Optional)
+- Store processing history and user preferences
+- SQLite for simple deployment or PostgreSQL for production
+
+## Specific Implementation Details
+
+### OCR Processing Function
+```javascript
+// Create a function that:
+// 1. Accepts image file
+// 2. Calls OCR service
+// 3. Returns extracted text
+// 4. Handles errors gracefully
+```
+
+### AI Parsing Prompt Template
+Create an AI prompt that instructs the model to:
+- Extract schedule information from OCR text
+- Return data in structured JSON format
+- Handle various date/time formats
+- Identify event titles and descriptions
+- Make reasonable assumptions for missing information
+
+### Google Calendar Event Creation
+```javascript
+// Function to:
+// 1. Authenticate with Google Calendar API
+// 2. Create events from parsed data
+// 3. Handle API rate limits
+// 4. Return success/failure status
+```
+
+## User Experience Flow
+
+1. **Landing Page**: Clear explanation of tool purpose with upload button
+2. **Upload**: Drag-and-drop or click to upload image
+3. **Processing**: Loading indicator while OCR and AI parsing occur
+4. **Review**: Display extracted events in editable table format
+5. **Confirm**: User can modify events before adding to calendar
+6. **Success**: Confirmation with links to created calendar events
+
+## Error Handling
+
+- Invalid image formats
+- OCR failures or poor image quality
+- AI parsing errors or unrecognizable schedule formats
+- Google Calendar API authentication failures
+- Network connectivity issues
+- Rate limiting from external APIs
+
+## Security Considerations
+
+- Secure file upload validation
+- Proper Google OAuth2 implementation
+- Temporary image storage with automatic cleanup
+- API key protection
+- User data privacy (don't store personal calendar information)
+
+## Deployment Requirements
+
+- **Frontend**: Deployable to Vercel, Netlify, or similar
+- **Backend**: AWS Lambda, Google Cloud Functions, or traditional server
+- **Environment Variables**: For API keys and configuration
+- **HTTPS**: Required for Google Calendar API integration
+
+## Sample Response Format for AI Parsing
+
+The AI should return extracted schedule data in this JSON format:
+```json
+{
+  "events": [
+    {
+      "title": "Team Meeting",
+      "date": "2024-01-15",
+      "startTime": "09:00",
+      "endTime": "10:00",
+      "description": "Weekly team sync",
+      "location": "Conference Room A"
+    }
+  ],
+  "confidence": 0.85,
+  "originalText": "Full OCR extracted text"
+}
+```
+
+## Additional Features (Nice to Have)
+
+- Support for multiple calendar accounts
+- Recurring event detection
+- Time zone handling
+- Calendar conflict detection
+- Export to other calendar applications
+- Mobile-responsive design
+- Offline processing capability
+
+## Testing Requirements
+
+- Unit tests for parsing logic
+- Integration tests for Google Calendar API
+- End-to-end testing with sample schedule images
+- Error handling validation
+- Performance testing with large images
+
+Please build this application with modern web development best practices, clean code architecture, and comprehensive error handling. Focus on user experience and make the tool intuitive for non-technical users.
