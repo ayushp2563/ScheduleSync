@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%; /* #FFFFFF */
+  --foreground: 240 10% 3.9%; /* #202124 */
+  --muted: 210 11% 96%; /* #F8F9FA */
+  --muted-foreground: 220 9% 46%; /* #5F6368 */
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 240 10% 3.9%; /* #202124 */
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 240 10% 3.9%; /* #202124 */
+  --border: 220 13% 91%; /* #E8EAED */
+  --input: 220 13% 91%; /* #E8EAED */
+  --primary: 217 91% 60%; /* #4285F4 - Google Blue */
+  --primary-foreground: 0 0% 98%; /* #FAFAFA */
+  --secondary: 210 11% 96%; /* #F8F9FA */
+  --secondary-foreground: 240 6% 25%; /* #3C4043 */
+  --accent: 210 11% 96%; /* #F8F9FA */
+  --accent-foreground: 240 6% 25%; /* #3C4043 */
+  --destructive: 4 90% 58%; /* #EA4335 - Google Red */
+  --destructive-foreground: 0 0% 98%; /* #FAFAFA */
+  --ring: 217 91% 60%; /* #4285F4 - Google Blue */
+  --radius: 0.5rem;
+
+  /* Google Colors */
+  --google-blue: 217 91% 60%; /* #4285F4 */
+  --google-green: 142 69% 58%; /* #34A853 */
+  --google-red: 4 90% 58%; /* #EA4335 */
+  --google-yellow: 45 100% 51%; /* #FBBC04 */
+  
+  /* Neutral Colors */
+  --neutral-50: 210 11% 97%; /* #F8F9FA */
+  --neutral-100: 220 13% 95%; /* #F1F3F4 */
+  --neutral-200: 220 13% 91%; /* #E8EAED */
+  --neutral-600: 220 9% 46%; /* #5F6368 */
+  --neutral-800: 240 6% 25%; /* #3C4043 */
+  --neutral-900: 240 10% 3.9%; /* #202124 */
+}
+
+.dark {
+  --background: 240 10% 3.9%; /* #202124 */
+  --foreground: 0 0% 98%; /* #FAFAFA */
+  --muted: 240 6% 25%; /* #3C4043 */
+  --muted-foreground: 220 9% 46%; /* #5F6368 */
+  --popover: 240 10% 3.9%; /* #202124 */
+  --popover-foreground: 0 0% 98%; /* #FAFAFA */
+  --card: 240 10% 3.9%; /* #202124 */
+  --card-foreground: 0 0% 98%; /* #FAFAFA */
+  --border: 240 6% 25%; /* #3C4043 */
+  --input: 240 6% 25%; /* #3C4043 */
+  --primary: 217 91% 60%; /* #4285F4 - Google Blue */
+  --primary-foreground: 0 0% 98%; /* #FAFAFA */
+  --secondary: 240 6% 25%; /* #3C4043 */
+  --secondary-foreground: 0 0% 98%; /* #FAFAFA */
+  --accent: 240 6% 25%; /* #3C4043 */
+  --accent-foreground: 0 0% 98%; /* #FAFAFA */
+  --destructive: 4 90% 58%; /* #EA4335 - Google Red */
+  --destructive-foreground: 0 0% 98%; /* #FAFAFA */
+  --ring: 217 91% 60%; /* #4285F4 - Google Blue */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .google-blue {
+    @apply text-blue-600;
+    color: hsl(var(--google-blue));
+  }
+  
+  .bg-google-blue {
+    background-color: hsl(var(--google-blue));
+  }
+  
+  .google-green {
+    @apply text-green-600;
+    color: hsl(var(--google-green));
+  }
+  
+  .bg-google-green {
+    background-color: hsl(var(--google-green));
+  }
+  
+  .google-red {
+    @apply text-red-600;
+    color: hsl(var(--google-red));
+  }
+  
+  .bg-google-red {
+    background-color: hsl(var(--google-red));
+  }
+  
+  .google-yellow {
+    @apply text-yellow-500;
+    color: hsl(var(--google-yellow));
+  }
+  
+  .bg-google-yellow {
+    background-color: hsl(var(--google-yellow));
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-pulse-gentle {
+    animation: pulse 2s infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(20px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
